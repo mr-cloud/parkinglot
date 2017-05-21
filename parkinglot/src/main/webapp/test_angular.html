@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="testModule">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="media/js/angular1_2_9.min.js"></script>
+<script type="text/javascript" src="qStats_js/filters.js"></script>
+<script type="text/javascript" src="qStats_js/controllers.js"></script>
+   <style>
+        input.ng-invalid {
+            border: 1px solid red;
+        }
+        input.ng-valid {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+	<form ng-submit="login()" ng-controller="LoginController" ng-init="init()">
+		name:<input type="text" ng-model="name" ng-minlength=3 ng-maxlength=10 required/> <br/>
+		password:<input type="password" ng-model="passwd" /> 您的密码：{{passwd}}<br />
+		<button type="submit">提交</button>
+	</form>
+	<p>{{12345 | toRMB}}</p>
+</body>
+</html>

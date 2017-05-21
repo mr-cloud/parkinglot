@@ -1,0 +1,198 @@
+.modal-backdrop {
+    opacity: 0 ;
+    filter: alpha(opacity=0) ;
+    z-index: -1;
+
+}
+
+
+.max-image img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: inherit;
+}
+
+.image-50 {
+    width: 50px;
+    height: 50px;
+}
+
+.max-image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.panel {
+    border-radius: 0;
+}
+
+.upload-image {
+    width: 200px;
+    height: 200px;
+}
+
+.navbar-brand {
+    padding: 3px 3px;
+}
+
+
+.navbar .dropdown-menu {
+    min-width: 0;
+}
+
+.navbar {
+    -webkit-box-shadow: 0 1px 2px #f5f5f5 ;
+    box-shadow: 0 1px 2px #f5f5f5;
+}
+
+.pagination {
+    margin: 0 0;
+    border-radius: 0;
+}
+
+
+/*-------------------   ------------my modifcation ------------------------*/
+
+.button-auto-width {
+    min-width: 40%;
+}
+
+
+/*-------------------------------no response----------------------------*/
+
+/* Template-specific stuff
+ *
+ * Customizations just for the template; these are not necessary for anything
+ * with disabling the responsiveness.
+ */
+
+/* Account for fixed navbar */
+body {
+    min-width: 1170px;
+    /*padding-top: 20px;*/
+    /*padding-bottom: 30px;*/
+}
+
+/* Don't let the lead text change font-size. */
+.lead {
+    font-size: 16px;
+}
+
+/* Finesse the page header spacing */
+.page-header {
+    margin-bottom: 30px;
+}
+.page-header .lead {
+    margin-bottom: 10px;
+}
+
+
+/* Non-responsive overrides
+ *
+ * Utilitze the following CSS to disable the responsive-ness of the container,
+ * grid system, and navbar.
+ */
+
+/* Reset the container */
+.container {
+    width: 1170px;
+    max-width: none !important;
+}
+
+.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* Demonstrate the grids */
+/*.col-xs-4 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #eee;
+    background-color: rgba(86,61,124,.15);
+    border: 1px solid #ddd;
+    border: 1px solid rgba(86,61,124,.2);
+}*/
+
+.container .navbar-header,
+.container .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+/* Always float the navbar header */
+.navbar-header {
+    float: left;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+}
+
+.navbar-toggle {
+    display: none;
+}
+.navbar-collapse {
+    border-top: 0;
+}
+
+.navbar-brand {
+    margin-left: -15px;
+}
+
+/* Always apply the floated nav */
+.navbar-nav {
+    float: left;
+    margin: 0;
+}
+.navbar-nav > li {
+    float: left;
+}
+.navbar-nav > li > a {
+    padding: 20px;
+}
+
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+    float: right;
+}
+
+/* Undo custom dropdowns */
+.navbar .navbar-nav .open .dropdown-menu {
+    position: absolute;
+    float: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-width: 0 1px 1px;
+    border-radius: 0 0 4px 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #333;
+}
+.navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > li > a:focus,
+.navbar .navbar-nav .open .dropdown-menu > .active > a,
+.navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #fff !important;
+    background-color: #428bca !important;
+}
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #999 !important;
+    background-color: transparent !important;
+}
