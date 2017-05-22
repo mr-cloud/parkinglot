@@ -22,6 +22,22 @@ public class Main {
      try (Connection conn = DriverManager.getConnection(url, userName, password)) {
          DSLContext create = using(conn, SQLDialect.MYSQL);
          Result<Record> result = create.select().from(AUTHOR).fetch();
+         System.out.println("Before inserted:");
+         for (Record r : result) {
+             Integer id = r.getValue(AUTHOR.ID);
+             String firstName = r.getValue(AUTHOR.FIRST_NAME);
+             String lastName = r.getValue(AUTHOR.LAST_NAME);
+
+             System.out.println("ID: " + id + " first name: " + firstName + " last name: " + lastName);
+         }
+         int rst = create.insertInto(table(AUTHOR.getName()), field(AUTHOR.ID), field(AUTHOR.FIRST_NAME), field(AUTHOR.LAST_NAME))
+                 .values(result.size()+1, "50Man", "Zhang")
+                 .execute();
+         if (rst != 1) {
+             System.out.println("Inserted failed!");
+         }
+         result = create.select().from(AUTHOR).fetch();
+         System.out.println("After inserted:");
          for (Record r : result) {
              Integer id = r.getValue(AUTHOR.ID);
              String firstName = r.getValue(AUTHOR.FIRST_NAME);
