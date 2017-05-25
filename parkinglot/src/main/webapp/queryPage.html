@@ -69,6 +69,7 @@
                       <label class="col-xs-5 control-label">统计属性</label>
                       <div class="col-xs-7">
                         <select class="form-control ">
+                           <!--  统计属性不一定与查询条件一致-->
                           <option ng-repeat="cq in queryOptions">{{cq.label}}</option>
                         </select>
                       </div>
@@ -77,6 +78,7 @@
                     <div class="col-xs-6">
                       <label class="col-xs-5 control-label">统计步长</label>
                       <div class="col-xs-7">
+                      <!-- 日、周、月方便报表 -->
                         <input type="number" class="form-control">
                       </div>
                     </div>
@@ -88,6 +90,8 @@
                 <div class="form-group">
                   <label class="col-xs-3 control-label "><strong>统计指标/y轴</strong></label>
                   <div class="col-xs-9">
+                  <!-- y轴就是统计量：count/mean/std -->
+                  <!--  
                     <div class="col-xs-6">
                       <label class="col-xs-5 control-label">指标属性</label>
                       <div class="col-xs-7">
@@ -96,14 +100,14 @@
                         </select>
                       </div>
                     </div>
-
+-->
                     <div class="col-xs-6">
                       <label class="col-xs-5 control-label">统计数值</label>
                       <div class="col-xs-7">
                         <select class="form-control ">
-                          <option> 个数</option>
-                          <option> 总数</option>
-                          <option> 平均数</option>
+                          <option> 计数</option>
+                          <option> 均值</option>
+                          <option> 方差</option>
                         </select>
                       </div>
                     </div>
@@ -144,6 +148,7 @@
       <div class="panel-body date-panel" ng-show="showQuery || showCount">
         <div class="row">
           <div class="col-xs-8"><h5>车辆记录</h5></div>
+          <!-- 结合Datatables extended -->
           <div class="col-xs-4"><button class="btn btn-success pull-right">数据导出</button></div>
         </div>
 
@@ -153,11 +158,13 @@
             <thead>
             <tr>
               <th ng-repeat="th in tableHead">
+              <!-- 阻止page refresh -->
                 <a href="javascript: void(0);" ng-click="doSort(th)">
                 {{th.label}}{{th.label == sortWhat.label ? (sortWhat.isDown ? "↓" : "↑") : ""}}</a></th>
             </tr>
             </thead>
             <tbody>
+            <!-- 数据绑定 -->
             <tr ng-repeat="th in [1,2,3,4,5,7,8,9,10]">
               <td ng-repeat="th in tableHead">value</td>
             </tr>
@@ -276,7 +283,7 @@
                 subtext: '出入量'
             },
             tooltip: {},
-
+            // 多种展示方式
             toolbox: {
                 show: true,
                 feature: {
