@@ -75,7 +75,7 @@
 							<name>org.jooq.util.mysql.MySQLDatabase</name>
 							<!-- The database schema (or in the absence of schema support, in 
 								your RDBMS this can be the owner, user, database name) to be generated -->
-							<inputSchema>library</inputSchema>
+							<inputSchema>pldb</inputSchema>
 							<includes>.*</includes>
 							<excludes></excludes>
 						</database>
@@ -119,7 +119,7 @@
 			<properties>
 				<jdbc.user>root</jdbc.user>
 				<jdbc.password>14641</jdbc.password>
-				<jdbc.url>jdbc:mysql://localhost:3306/library</jdbc.url>
+				<jdbc.url>jdbc:mysql://localhost:3306/pldb</jdbc.url>
 				<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
 			</properties>
 		</profile>

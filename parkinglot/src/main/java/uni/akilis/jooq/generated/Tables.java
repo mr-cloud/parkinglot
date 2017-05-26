@@ -7,10 +7,20 @@ package uni.akilis.jooq.generated;
 import javax.annotation.Generated;
 
 import uni.akilis.jooq.generated.tables.Author;
+import uni.akilis.jooq.generated.tables.Plblacklist;
+import uni.akilis.jooq.generated.tables.Pldealrecord;
+import uni.akilis.jooq.generated.tables.Plmalfunctionrecord;
+import uni.akilis.jooq.generated.tables.Plparkingcar;
+import uni.akilis.jooq.generated.tables.Plparkingrecord;
+import uni.akilis.jooq.generated.tables.Plparkingsensor;
+import uni.akilis.jooq.generated.tables.Plparkingspace;
+import uni.akilis.jooq.generated.tables.Plreserveparkinguser;
+import uni.akilis.jooq.generated.tables.Plrunrecord;
+import uni.akilis.jooq.generated.tables.Plsysuser;
 
 
 /**
- * Convenience access to all tables in library
+ * Convenience access to all tables in pldb
  */
 @Generated(
     value = {
@@ -23,7 +33,57 @@ import uni.akilis.jooq.generated.tables.Author;
 public class Tables {
 
     /**
-     * The table <code>library.author</code>.
+     * The table <code>pldb.author</code>.
      */
     public static final Author AUTHOR = uni.akilis.jooq.generated.tables.Author.AUTHOR;
+
+    /**
+     * The table <code>pldb.plblacklist</code>.
+     */
+    public static final Plblacklist PLBLACKLIST = uni.akilis.jooq.generated.tables.Plblacklist.PLBLACKLIST;
+
+    /**
+     * The table <code>pldb.pldealrecord</code>.
+     */
+    public static final Pldealrecord PLDEALRECORD = uni.akilis.jooq.generated.tables.Pldealrecord.PLDEALRECORD;
+
+    /**
+     * The table <code>pldb.plmalfunctionrecord</code>.
+     */
+    public static final Plmalfunctionrecord PLMALFUNCTIONRECORD = uni.akilis.jooq.generated.tables.Plmalfunctionrecord.PLMALFUNCTIONRECORD;
+
+    /**
+     * The table <code>pldb.plparkingcar</code>.
+     */
+    public static final Plparkingcar PLPARKINGCAR = uni.akilis.jooq.generated.tables.Plparkingcar.PLPARKINGCAR;
+
+    /**
+     * The table <code>pldb.plparkingrecord</code>.
+     */
+    public static final Plparkingrecord PLPARKINGRECORD = uni.akilis.jooq.generated.tables.Plparkingrecord.PLPARKINGRECORD;
+
+    /**
+     * The table <code>pldb.plparkingsensor</code>.
+     */
+    public static final Plparkingsensor PLPARKINGSENSOR = uni.akilis.jooq.generated.tables.Plparkingsensor.PLPARKINGSENSOR;
+
+    /**
+     * The table <code>pldb.plparkingspace</code>.
+     */
+    public static final Plparkingspace PLPARKINGSPACE = uni.akilis.jooq.generated.tables.Plparkingspace.PLPARKINGSPACE;
+
+    /**
+     * The table <code>pldb.plreserveparkinguser</code>.
+     */
+    public static final Plreserveparkinguser PLRESERVEPARKINGUSER = uni.akilis.jooq.generated.tables.Plreserveparkinguser.PLRESERVEPARKINGUSER;
+
+    /**
+     * The table <code>pldb.plrunrecord</code>.
+     */
+    public static final Plrunrecord PLRUNRECORD = uni.akilis.jooq.generated.tables.Plrunrecord.PLRUNRECORD;
+
+    /**
+     * The table <code>pldb.plsysuser</code>.
+     */
+    public static final Plsysuser PLSYSUSER = uni.akilis.jooq.generated.tables.Plsysuser.PLSYSUSER;
 }

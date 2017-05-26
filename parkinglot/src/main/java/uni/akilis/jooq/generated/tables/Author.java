@@ -17,7 +17,7 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.TableImpl;
 
 import uni.akilis.jooq.generated.Keys;
-import uni.akilis.jooq.generated.Library;
+import uni.akilis.jooq.generated.Pldb;
 import uni.akilis.jooq.generated.tables.records.AuthorRecord;
 
 
@@ -34,10 +34,10 @@ import uni.akilis.jooq.generated.tables.records.AuthorRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Author extends TableImpl<AuthorRecord> {
 
-    private static final long serialVersionUID = 1651848899;
+    private static final long serialVersionUID = -1983728448;
 
     /**
-     * The reference instance of <code>library.author</code>
+     * The reference instance of <code>pldb.author</code>
      */
     public static final Author AUTHOR = new Author();
 
@@ -50,29 +50,29 @@ public class Author extends TableImpl<AuthorRecord> {
     }
 
     /**
-     * The column <code>library.author.id</code>.
+     * The column <code>pldb.author.id</code>.
      */
     public final TableField<AuthorRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
-     * The column <code>library.author.first_name</code>.
+     * The column <code>pldb.author.first_name</code>.
      */
     public final TableField<AuthorRecord, String> FIRST_NAME = createField("first_name", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
-     * The column <code>library.author.last_name</code>.
+     * The column <code>pldb.author.last_name</code>.
      */
     public final TableField<AuthorRecord, String> LAST_NAME = createField("last_name", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
-     * Create a <code>library.author</code> table reference
+     * Create a <code>pldb.author</code> table reference
      */
     public Author() {
         this("author", null);
     }
 
     /**
-     * Create an aliased <code>library.author</code> table reference
+     * Create an aliased <code>pldb.author</code> table reference
      */
     public Author(String alias) {
         this(alias, AUTHOR);
@@ -91,7 +91,7 @@ public class Author extends TableImpl<AuthorRecord> {
      */
     @Override
     public Schema getSchema() {
-        return Library.LIBRARY;
+        return Pldb.PLDB;
     }
 
     /**
