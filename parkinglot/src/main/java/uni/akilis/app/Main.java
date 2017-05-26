@@ -15,7 +15,7 @@ public class Main {
  public static void main(String[] args) {
      String userName = "root";
      String password = "14641";
-     String url = "jdbc:mysql://localhost:3306/library";
+     String url = "jdbc:mysql://localhost:3306/pldb";
 
      // Connection is the only JDBC resource that we need
      // PreparedStatement and ResultSet are handled by jOOQ, internally
