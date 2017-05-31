@@ -42,7 +42,7 @@
         <div class="left fl" style="width: 210px;">
         <ul class="OMenu">
             <li><a href="qStats_plblacklist.html"><span id="plblacklist"></span></a></li>
-            <li><a href="qStats_pldealrecord.html"><span id="pldealrecord"></span></a></li>
+            <li class="on"><span id="pldealrecord"></span></li>
             <li><a href="qStats_plmalfunctionrecord.html"><span id="plmalfunctionrecord"></span></a></li>
             <li><a href="qStats_plparkingsensor.html"><span id="plparkingsensor"></span></a></li>
             <li><a href="qStats_plparkingspace.html"><span id="plparkingspace"></span></a></li>
@@ -57,9 +57,15 @@
     </div>
         <div class="right">
         <div class="right_main" style="overflow-y: scroll;">
-                    <table id="Table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <table id="pldealrecordTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
+                <th id="pldealrecordTable.id"></th>
+                                <th id="pldealrecordTable.time"></th>
+                                <th id="pldealrecordTable.type"></th>
+                                <th id="pldealrecordTable.description"></th>
+                                <th id="pldealrecordTable.opName"></th>
+                
                 </tr>
                 </thead>
             </table>
@@ -69,7 +75,7 @@
         </div>        
 </body>
 
-<script src="qStats_js/qStats.js"></script>
+<script src="qStats_js/qStats_pldealrecord.js"></script>
 
 
 </html>

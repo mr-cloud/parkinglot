@@ -9,4 +9,11 @@ $(document).ready(function() {
 	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
 	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
 	
+	// Init columns
+	document.getElementById("pldealrecordTable.id").innerHTML = "id";
+	document.getElementById("pldealrecordTable.time").innerHTML = "time";
+	document.getElementById("pldealrecordTable.type").innerHTML = "type";
+	document.getElementById("pldealrecordTable.description").innerHTML = "description";
+	document.getElementById("pldealrecordTable.opName").innerHTML = "opName";
+
 });
