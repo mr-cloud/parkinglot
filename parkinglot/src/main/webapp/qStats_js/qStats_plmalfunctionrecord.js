@@ -32,7 +32,6 @@ $(document).ready(function() {
 	document.getElementById("DataTable.time").innerHTML = "time";
 	document.getElementById("DataTable.type").innerHTML = "type";
 	document.getElementById("DataTable.description").innerHTML = "description";
-	document.getElementById("DataTable.opName").innerHTML = "opName";
 
 	// Init table and show records.
     // Setup - add a text input to each footer cell
@@ -53,21 +52,18 @@ $(document).ready(function() {
         "processing": true,
         "order": [[0, 'asc']],
 		"ajax" : {
-			"url" : "showTableClientSide.do?name=pldealrecord",
+			"url" : "showTableClientSide.do?name=plmalfunctionrecord",
 			// 从数组获取数据
 			"dataSrc" : function (json) {
-//				console.log(json);
 				console.log(json.fields);
-//				console.log(json.records);
 				 return json.records;
-//				return json;
 			},
 			"data" : function(data) {
 				// 添加其他参数
 				planify(data)
 			}
 		},
-		// Key-val map.
+		// Key-val map. Here we use pure data by array in array.
 		/*columns : [
 					{
 						data : "id"

@@ -43,10 +43,10 @@
         <div class="left fl" style="width: 210px;">
         <ul class="OMenu">
             <li><a href="qStats_plblacklist.html"><span id="plblacklist"></span></a></li>
-            <li class="on"><span id="pldealrecord"></span></li>
+            <li><a href="qStats_pldealrecord.html"><span id="pldealrecord"></span></a></li>
             <li><a href="qStats_plmalfunctionrecord.html"><span id="plmalfunctionrecord"></span></a></li>
             <li><a href="qStats_plparkingsensor.html"><span id="plparkingsensor"></span></a></li>
-            <li><a href="qStats_plparkingspace.html"><span id="plparkingspace"></span></a></li>
+            <li class="on"><span id="plparkingspace"></span></li>
 
             <li><a href="qStats_plparkingcar.html"><span id="plparkingcar"></span></a></li>
             <li><a href="qStats_plparkingrecord.html"><span id="plparkingrecord"></span></a></li>
@@ -58,25 +58,14 @@
     </div>
         <div class="right">
         <div class="right_main" style="overflow-y: scroll;">
-                    <table border="0" cellspacing="5" cellpadding="5">
-        <tbody><tr>
-            <td>开始时间（yyyy-mm-dd）:</td>
-            <td><input type="text" id="min" name="min" style="border:1px solid;"></td>
-        </tr>
-        <tr>
-            <td>结束时间（yyyy-mm-dd）:</td>
-            <td><input type="text" id="max" name="max" style="border:1px solid;"></td>
-        </tr>
-    </tbody></table>
                     <table id="DataTable" class="table table-striped table-bordered stripe row-border order-column" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                <th id="DataTable.id"></th>
-                                <th id="DataTable.time"></th>
-                                <th id="DataTable.type"></th>
-                                <th id="DataTable.description"></th>
-                                <th id="DataTable.opName"></th>
-                
+                <th id="DataTable.pSpaceId"></th>
+                                <th id="DataTable.resStatus"></th>
+                                <th id="DataTable.carType"></th>
+                <th id="DataTable.ps_sId"></th>
+                <th id="DataTable.pc_tId"></th>
                 </tr>
                 </thead>
                         <tfoot>
@@ -95,7 +84,7 @@
         </div>        
 </body>
 
-<script src="qStats_js/qStats_pldealrecord.js"></script>
+<script src="qStats_js/qStats_plparkingspace.js"></script>
 
 
 </html>

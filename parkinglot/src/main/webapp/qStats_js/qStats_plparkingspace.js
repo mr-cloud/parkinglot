@@ -1,21 +1,3 @@
-/* Custom filtering function which will search data in column x between two values */
-$.fn.dataTable.ext.search.push(
-    function( settings, data, dataIndex ) {
-    	var x = 1;
-        var min = Date.parse( $('#min').val());
-        var max = Date.parse( $('#max').val());
-        var time = Date.parse( data[x] ); // use data for the time column
- 
-        if ( ( isNaN( min ) && isNaN( max ) ) ||
-             ( isNaN( min ) && time <= max ) ||
-             ( min <= time   && isNaN( max ) ) ||
-             ( min <= time   && time <= max ) )
-        {
-            return true;
-        }
-        return false;
-    }
-);
 $(document).ready(function() {
 	// Init tables.
 	document.getElementById("plblacklist").innerHTML = "plblacklist";
@@ -28,11 +10,11 @@ $(document).ready(function() {
 	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
 	
 	// Init columns
-	document.getElementById("DataTable.id").innerHTML = "id";
-	document.getElementById("DataTable.time").innerHTML = "time";
-	document.getElementById("DataTable.type").innerHTML = "type";
-	document.getElementById("DataTable.description").innerHTML = "description";
-	document.getElementById("DataTable.opName").innerHTML = "opName";
+	document.getElementById("DataTable.pSpaceId").innerHTML = "pSpaceId";
+	document.getElementById("DataTable.resStatus").innerHTML = "resStatus";
+	document.getElementById("DataTable.carType").innerHTML = "carType";
+	document.getElementById("DataTable.ps_sId").innerHTML = "ps_sId";
+	document.getElementById("DataTable.pc_tId").innerHTML = "pc_tId";
 
 	// Init table and show records.
     // Setup - add a text input to each footer cell
@@ -53,21 +35,18 @@ $(document).ready(function() {
         "processing": true,
         "order": [[0, 'asc']],
 		"ajax" : {
-			"url" : "showTableClientSide.do?name=pldealrecord",
+			"url" : "showTableClientSide.do?name=plparkingspace",
 			// 从数组获取数据
 			"dataSrc" : function (json) {
-//				console.log(json);
 				console.log(json.fields);
-//				console.log(json.records);
 				 return json.records;
-//				return json;
 			},
 			"data" : function(data) {
 				// 添加其他参数
 				planify(data)
 			}
 		},
-		// Key-val map.
+		// Key-val map. Here we use pure data by array in array.
 		/*columns : [
 					{
 						data : "id"
