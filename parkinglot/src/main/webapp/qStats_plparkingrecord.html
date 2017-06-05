@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>智能车库管理系统-统计与查询</title>
+
+      <link rel="stylesheet" href="media/qStats/css/style.css" >
+  
+      <link href="media/qStats/css/dataTables.bootstrap.min.css" type="text/css" rel="stylesheet"/>
+          <link href="media/qStats/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+      
+      
+      <script type="text/javascript" src="media/qStats/js/jQuery-2.1.4.min.js"></script>  
+      <script type="text/javascript" src="media/qStats/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="media/qStats/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="qStats_js/datatable-chinese-localization-for-qStats.js"></script>
+  
+    <!-- 支持下载 -->
+        <link href="media/qStats/css/buttons.dataTables.min.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="media/qStats/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="media/qStats/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="media/qStats/js/jszip.min.js"></script>
+    <script type="text/javascript" src="media/qStats/js/pdfmake.min.js"></script>
+    <script type="text/javascript" src="media/qStats/js/vfs_fonts.js"></script>
+    <script type="text/javascript" src="media/qStats/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="media/qStats/js/buttons.print.min.js"></script>
+ 
+</head>
+
+<body>
+<div class="top">
+    <h1>智能车库管理系统</h1>
+
+    <div id="admin_header"></div>
+
+    <div class="nav">
+        <span>统计与查询</span>
+    </div>
+
+</div>
+<div class="main hack">
+        <div class="left fl" style="width: 210px;">
+        <ul class="OMenu">
+            <li><a href="qStats_plblacklist.html"><span id="plblacklist"></span></a></li>
+            <li><a href="qStats_pldealrecord.html"><span id="pldealrecord"></span></a></li>
+            <li><a href="qStats_plmalfunctionrecord.html"><span id="plmalfunctionrecord"></span></a></li>
+            <li><a href="qStats_plparkingsensor.html"><span id="plparkingsensor"></span></a></li>
+            <li><a href="qStats_plparkingspace.html"><span id="plparkingspace"></span></a></li>
+
+            <li><a href="qStats_plparkingcar.html"><span id="plparkingcar"></span></a></li>
+            <li class="on"><span id="plparkingrecord"></span></li>
+            <li><a href="qStats_plrunrecord.html"><span id="plrunrecord"></span></a></li>
+        </ul>
+    </div>
+    <div class="Middle fl">
+        <span></span>
+    </div>
+        <div class="right" style="height: 396px;">
+        <div class="right_main" style="overflow-y: scroll;">
+        <div style="border: 1px solid;">
+                                               <table border="0" cellspacing="10" cellpadding="10">
+        <tbody><tr>
+            <td>车牌号码:</td>
+            <td><input type="text" id="carLicenseQ" style="border:1px solid;"></td>
+        </tr>
+        <tr>
+            <td>车辆类型:
+            </td>
+            <td>
+                           <select id="carTypeQ"  class="pulldown bfb30 fl_l"
+                    >
+                    <option value="">车辆类型
+                    </option>
+                    <!-- FIXME -->
+                    <option value="car">car</option>
+                    <option value="suv">suv</option>
+                    </select>
+            </td>
+        </tr>
+        <tr>
+            <td>车辆颜色:
+            </td>
+            <td>
+                           <select id="carColorQ"  class="pulldown bfb30 fl_l"
+                    >
+                    <option value="">车辆颜色
+                    </option>
+                    <!-- FIXME -->
+                                        <option value="R">R</option>
+                    <option value="B">B</option>
+                    
+                    </select>
+            </td>
+        </tr>
+          <tr>
+            <td>入场时间:</td>
+            <td><input type="date" value="1970-01-01" id="iTimeStartQ"/>
+            <span> —— </span> 
+            <input id="iTimeEndQ" type="date" value="9999-12-31"/>
+            </td>
+        </tr>
+                  <tr>
+            <td>出场时间:</td>
+            <td><input type="date" value="1970-01-01" id="oTimeStartQ"/>
+            <span> —— </span> 
+            <input id="oTimeEndQ" type="date" value="9999-12-31"/>
+            </td>
+        </tr>
+        <tr>
+            <td>编码:</td>
+            <td><input type="text" id="codeQ" style="border:1px solid;"></td>
+        </tr>
+        <tr>
+            <td>支付方式:
+            </td>
+            <td>
+                           <select id="payWayQ"  class="pulldown bfb30 fl_l"
+                    >
+                    <option value="">支付方式
+                    </option>
+                    <!-- FIXME -->
+                                        <option value="Alipay">Alipay</option>
+                    <option value="Cash">Cash</option>
+                    
+                    </select>
+            </td>
+        </tr>
+        
+    </tbody></table>
+    </div>
+    <br/>
+                            <div>
+                <input type="button" class="Public_button" value="查 询" onclick="searchReports()"/>
+                &nbsp;&nbsp;
+                             <!-- 确认导出->下载表格 -->
+            <input id="confirmDownloadBtn" type="button" class="Public_button" value="确认导出" onclick="confirmDownload()"/>
+            &nbsp;&nbsp;
+            </div>
+            <br/>
+                    <table id="DataTable" class="table table-striped table-bordered stripe row-border order-column" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                <th id="DataTable.id"></th>
+                                <th id="DataTable.carLicense"></th>
+                                <th id="DataTable.carType"></th>
+                                <th id="DataTable.carColor"></th>
+                                                <th id="DataTable.iTime"></th>
+                                                <th id="DataTable.oTime"></th>
+                                                <th id="DataTable.code"></th>
+                                                <th id="DataTable.cost"></th>
+                                                <th id="DataTable.payWay"></th>
+               
+                </tr>
+                </thead>
+                       
+            </table>
+        
+        </div>
+        </div>
+        </div>        
+</body>
+
+<script src="qStats_js/qStats_plparkingrecord.js"></script>
+
+
+</html>

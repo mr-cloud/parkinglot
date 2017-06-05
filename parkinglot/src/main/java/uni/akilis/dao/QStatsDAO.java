@@ -24,4 +24,19 @@ public interface QStatsDAO {
      */
     String getTable(String tableName);
     
+    /**
+     * Find the categories of the column.
+     * @param tableName
+     * @param colName
+     * @return
+     */
+    String getColumnCategories(String tableName, String colName);
+
+    /**
+     * 
+     * @param reqParams Json string.
+     * @return Records in Json format.
+     */
+    String getTableRecordsServerSide(String reqParams);
+    
 }

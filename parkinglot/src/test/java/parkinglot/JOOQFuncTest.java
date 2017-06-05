@@ -1,6 +1,6 @@
 package parkinglot;
 
-import static org.jooq.impl.DSL.using;
+import static org.jooq.impl.DSL.*;
 import static org.junit.Assert.*;
 
 import java.sql.Connection;
@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.Record;
+import org.jooq.Record1;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.Table;
@@ -43,7 +44,7 @@ public class JOOQFuncTest {
     public void tearDown() throws Exception{
         //create.close();
     }
-//    @Ignore
+    @Ignore
     @Test
     public void testMetadata(){
         LoggerX.println("Tables:");
@@ -60,11 +61,21 @@ public class JOOQFuncTest {
         }
         assertTrue(Pldb.PLDB.getTables().size() > 0);
     }
+   @Ignore
     @Test
     public void testGetTableRecords(){
         Result<Record> result = create.select().from(PLDEALRECORD).fetch();
         LoggerX.println("size: " + result.size());
         String jsonTable = result.formatJSON();
         LoggerX.println("records: \n" + jsonTable);
+    }
+    
+    @Test 
+    public void testGetColumnCategories(){
+        Result<Record1<Object>> result = create.selectDistinct(field("carType")).from(table("plparkingrecord"))
+            .where(field("carType").isNotNull())
+            .fetch();
+        String json = result.formatJSON();
+        LoggerX.println("Column categories: \n" + json);
     }
 }
