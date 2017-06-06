@@ -91,12 +91,23 @@ public class QStatsDAOImpl implements QStatsDAO{
             else if (cond.getKey().startsWith("oTime")) {
                 colName = "oTime";
             }
+            else if (cond.getKey().startsWith("time")) {
+                colName = "time";
+            }
             else
                 ;
             JsonArray expr = cond.getValue().getAsJsonArray();
-            String val = expr.get(2).getAsString();
-            if ("".equals(val)) {
+            if ("".equals(expr.get(2).getAsString())) {
                 continue;
+            }
+            Object val = null;
+            if ("spaceId".equalsIgnoreCase(colName)
+                    || "status".equalsIgnoreCase(colName)
+                    || "step".equalsIgnoreCase(colName)) {
+                val = expr.get(2).getAsInt();
+            }
+            else{
+                val = expr.get(2).getAsString();
             }
             String op = expr.get(1).getAsString();
             if ("LIKE".equalsIgnoreCase(op)) {
