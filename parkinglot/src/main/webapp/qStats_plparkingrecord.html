@@ -26,6 +26,7 @@
     <script type="text/javascript" src="media/qStats/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="media/qStats/js/buttons.print.min.js"></script>
  
+    <script type="text/javascript" src="media/qStats/js/echarts3_5_1.common.min.js"></script>
 </head>
 
 <body>
@@ -155,7 +156,43 @@
                 </thead>
                        
             </table>
-        
+            <br/><br/><br/>
+        <div>
+                统计项/x轴 <select id="statsX"  class="pulldown bfb30 fl_l" onchange="xAxisChose()">
+                    <option value="">统计项 </option>
+                    <!-- value is <colName> -->
+                    <option value='["carLicense","false",["count"]]'>车牌号码</option>
+                    <option value='["carType","true",["count"]]'>车辆类型</option>
+                    <option value='["carColor","true",["count"]]'>车辆颜色</option>
+                    <option value='["code","true",["count"]]'>编码</option>
+                    <option value='["cost","false",["sum","avg","std"]]'>收费金额</option>
+                    <option value='["payWay","false",["count"]]'>支付方式</option>
+                    </select>
+                &nbsp;&nbsp;
+                统计指标/y轴<select id="statsY"  class="pulldown bfb30 fl_l">
+                <option value="">统计指标</option>
+                </select>
+                            &nbsp;&nbsp;
+                
+        时间列<select id="timeCol"  class="pulldown bfb30 fl_l">
+        <option value="iTime">入场时间</option>
+                <option value="oTime">出场时间</option>
+            </select>                
+            &nbsp;&nbsp;
+                周期<select id="period"  class="pulldown bfb30 fl_l">
+                    <option value="monthly">按月</option>
+                    <option value="weekly">按周</option>
+                    <option value="daily">按日</option>
+                <option>
+                </select>
+                            &nbsp;&nbsp;
+                
+            <input id="statsBtn" type="button" class="Public_button" value="统计" onclick="stats()"/>
+            &nbsp;&nbsp;
+            <br/>
+                      <div id="statsReport" style="width: 100%; height: 500px"></div>
+            
+            </div>
         </div>
         </div>
         </div>        

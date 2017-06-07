@@ -1,6 +1,99 @@
 var confirmDownloadTag = false;
 var reportTable;
 var tableName = "plparkingrecord";
+var myChart;
+
+function stats(){
+	var xAttr = JSON.parse($("#statsX").val());
+	colName = xAttr[0];
+	metric = $("#statsY").val();
+	groupBy = xAttr[1];
+	timeCol = $("#timeCol").val();
+	period = $("#period").val();
+	if (colName === "" || metric === "" || groupBy === "" || timeCol === "" || period === "") {
+		alert("Stats conditions is incomplete!");
+		return;
+	}
+	var xAxisData;
+	var seriesData;
+
+	$.ajax({
+		//解析从后台返回的json数据  
+		data : "tableName=" + tableName +  "&colName=" + colName
+					+ "&metric=" + metric + "&groupBy=" + groupBy
+					+ "&timeCol=" + timeCol + "&period=" + period,
+		url : "showReport.do",
+		type : "get",
+		success : function(data) {
+			console.log("Stats data:\n " + data);
+			xAxisData = data.xAxis;
+			seriesData = data.series;
+			
+			var subtext = colName;
+			var seriesName = metric;
+			
+			
+			// 基于准备好的dom，初始化echarts实例
+		    myChart = echarts.init(document.getElementById('statsReport'));
+
+		    // 指定图表的配置项和数据
+		    var option = {
+		        title: {
+		            text: '',
+		            subtext: subtext
+		        },
+		        tooltip: {
+		        	show:true
+		        },
+		        // 多种展示方式
+		        toolbox: {
+		            show: true,
+		            feature: {
+		                dataZoom: {
+		                    yAxisIndex: 'none'
+		                },
+		                magicType: {type: ['line', 'bar']},
+		                saveAsImage: {}
+		            }
+		        },
+		        xAxis: {
+		            data: xAxisData
+		        },
+		        yAxis: {},
+		        series: [{
+		            name: seriesName,
+		            type: 'bar',
+		            data: seriesData
+		        }]
+		    };
+
+		    // 使用刚指定的配置项和数据显示图表。
+		    myChart.setOption(option);
+		}
+	});
+}
+
+function removeOptions(selectbox) {
+	var i;
+	for (i = selectbox.options.length - 1; i >= 0; i--) {
+		selectbox.remove(i);
+	}
+}
+
+function xAxisChose(){
+	yAxisSel = document.getElementById("statsY");
+	removeOptions(yAxisSel);
+	var xAttr = JSON.parse($("#statsX").val());
+	arr = xAttr[2];
+	var opt = document.createElement("option");
+	for (var i = 0; i < arr.length; i++) {
+		var opt = document.createElement("option");
+		opt.value = arr[i];
+		opt.innerHTML = arr[i];
+		yAxisSel.appendChild(opt);
+	}
+}
+
 
 function getcarType() {
 	getColumnCategories("carType");

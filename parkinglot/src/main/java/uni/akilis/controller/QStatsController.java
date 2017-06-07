@@ -20,7 +20,8 @@ import uni.akilis.helper.LoggerX;
 @WebServlet(
         urlPatterns={"/showTableClientSide.do",
                 "/showTableServerSide.do",
-        "/showColumnCategories.do"}
+        "/showColumnCategories.do",
+        "/showReport.do"}
         )
 public class QStatsController extends HttpServlet{
     private QStatsDAO qStatsDAO;
@@ -77,6 +78,9 @@ public class QStatsController extends HttpServlet{
             } catch (Exception e) { /*report an error*/ }
             LoggerX.println("Content: " + jb.toString());
             rst = this.qStatsDAO.getTableRecordsServerSide(jb.toString());
+        }
+        else if ("/showReport.do".equalsIgnoreCase(url)) {
+            // TODO
         }
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
