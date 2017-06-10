@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<div class="top">
+<!-- <div class="top">
     <h1>智能车库管理系统</h1>
 
     <div id="admin_header"></div>
@@ -39,7 +39,7 @@
         <span>统计与查询</span>
     </div>
 
-</div>
+</div> -->
 <div class="main hack">
         <div class="left fl" style="width: 210px;">
         <ul class="OMenu">
@@ -57,8 +57,8 @@
     <div class="Middle fl">
         <span></span>
     </div>
-        <div class="right" style="height: 396px;">
-        <div class="right_main" style="overflow-y: scroll;">
+        <div class="right" style="height: 580px;">
+        <div class="right_main" style="overflow-y: scroll; height:580px">
         <div style="border: 1px solid;">
                                                <table border="0" cellspacing="10" cellpadding="10">
         <tbody><tr>
@@ -164,9 +164,9 @@
                     <option value='["carLicense","false",["count"]]'>车牌号码</option>
                     <option value='["carType","true",["count"]]'>车辆类型</option>
                     <option value='["carColor","true",["count"]]'>车辆颜色</option>
-                    <option value='["code","true",["count"]]'>编码</option>
-                    <option value='["cost","false",["sum","avg","std"]]'>收费金额</option>
-                    <option value='["payWay","false",["count"]]'>支付方式</option>
+                    <option value='["code","false",["count"]]'>编码</option>
+                    <option value='["cost","false",["sum","avg","var"]]'>收费金额</option>
+                    <option value='["payWay","true",["count"]]'>支付方式</option>
                     </select>
                 &nbsp;&nbsp;
                 统计指标/y轴<select id="statsY"  class="pulldown bfb30 fl_l">
@@ -183,7 +183,6 @@
                     <option value="monthly">按月</option>
                     <option value="weekly">按周</option>
                     <option value="daily">按日</option>
-                <option>
                 </select>
                             &nbsp;&nbsp;
                 

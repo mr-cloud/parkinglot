@@ -26,10 +26,12 @@
     <script type="text/javascript" src="media/qStats/js/buttons.html5.min.js"></script>
     <script type="text/javascript" src="media/qStats/js/buttons.print.min.js"></script>
  
+     <script type="text/javascript" src="media/qStats/js/echarts3_5_1.common.min.js"></script>
+ 
 </head>
 
 <body>
-<div class="top">
+<!-- <div class="top">
     <h1>智能车库管理系统</h1>
 
     <div id="admin_header"></div>
@@ -38,7 +40,7 @@
         <span>统计与查询</span>
     </div>
 
-</div>
+</div> -->
 <div class="main hack">
         <div class="left fl" style="width: 210px;">
         <ul class="OMenu">
@@ -56,8 +58,8 @@
     <div class="Middle fl">
         <span></span>
     </div>
-        <div class="right" style="height: 396px;">
-        <div class="right_main" style="overflow-y: scroll;">
+        <div class="right" style="height: 580px;">
+        <div class="right_main" style="overflow-y: scroll;height: 580px;">
         <div style="border: 1px solid;">
                                                <table border="0" cellspacing="10" cellpadding="10">
         <tbody><tr>
@@ -126,7 +128,37 @@
                 </thead>
                        
             </table>
-        
+            <br/><br/><br/>
+        <div>
+                统计项/x轴 <select id="statsX"  class="pulldown bfb30 fl_l" onchange="xAxisChose()">
+                    <option value="">统计项 </option>
+                    <!-- value is <colName> -->
+                    <option value='["status","true",["count"]]'>断电状态</option>
+                    <option value='["step","true",["count"]]'>断电步骤</option>
+                    </select>
+                &nbsp;&nbsp;
+                统计指标/y轴<select id="statsY"  class="pulldown bfb30 fl_l">
+                <option value="">统计指标</option>
+                </select>
+                            &nbsp;&nbsp;
+                
+        时间列<select id="timeCol"  class="pulldown bfb30 fl_l">
+        <option value="time">开始时间</option>
+            </select>                
+            &nbsp;&nbsp;
+                周期<select id="period"  class="pulldown bfb30 fl_l">
+                    <option value="monthly">按月</option>
+                    <option value="weekly">按周</option>
+                    <option value="daily">按日</option>
+                </select>
+                            &nbsp;&nbsp;
+                
+            <input id="statsBtn" type="button" class="Public_button" value="统计" onclick="stats()"/>
+            &nbsp;&nbsp;
+            <br/>
+                      <div id="statsReport" style="width: 100%; height: 500px"></div>
+            
+            </div>
         </div>
         </div>
         </div>        

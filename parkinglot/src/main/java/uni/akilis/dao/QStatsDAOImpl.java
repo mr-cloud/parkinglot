@@ -3,6 +3,8 @@ package uni.akilis.dao;
 import static org.jooq.impl.DSL.*;
 
 import static uni.akilis.jooq.generated.Tables.*;
+
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.List;
 import java.util.Map;
@@ -13,17 +15,24 @@ import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.Operator;
 import org.jooq.Record;
+import org.jooq.Result;
 import org.jooq.SQLDialect;
 import org.jooq.SelectQuery;
 import org.jooq.impl.DSL;
+import org.jooq.util.mysql.MySQLDataType;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
 
 import uni.akilis.helper.LoggerX;
-
+/**
+ *
+ * @author Leo
+ *
+ */
 public class QStatsDAOImpl implements QStatsDAO{
     String userName = "root";
     String password = "14641";
@@ -32,7 +41,7 @@ public class QStatsDAOImpl implements QStatsDAO{
     DSLContext create;
     Connection conn;
 
-
+    public static final String TAG = QStatsDAOImpl.class.getName(); 
     public QStatsDAOImpl() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -123,6 +132,80 @@ public class QStatsDAOImpl implements QStatsDAO{
         }
         jsonTable = new JsonParser().parse(selectQuery.fetch().formatJSON()).getAsJsonObject();
         rst.add("data", jsonTable.get("records").getAsJsonArray());
+        return rst.toString();
+    }
+
+
+    @Override
+    public String doStats(String tableName, String colName, String metric, boolean groupBy, String timeCol,
+            String period) {
+        JsonObject rst = new JsonObject();
+        // From clause.
+        SelectQuery<Record> selectQuery = create.selectQuery(table(tableName));
+        // Where clause.
+        if (timeCol != null && !timeCol.isEmpty()) {
+            Condition condi;
+            if ("daily".equalsIgnoreCase(period)) {
+                condi = DSL.field(timeCol).between(DSL.currentDate().sub(1),
+                        DSL.currentDate());
+            }
+            else if ("weekly".equalsIgnoreCase(period)) {
+                condi = DSL.field(timeCol).between(DSL.currentDate().sub(7),
+                        DSL.currentDate());
+            }
+            else if ("monthly".equalsIgnoreCase(period)) {
+                condi = DSL.field(timeCol).between(DSL.currentDate().sub(30),
+                        DSL.currentDate());
+            }
+            else {
+                LoggerX.println(TAG, "Report on daily as priod is null.");
+                condi = DSL.field(timeCol).between(DSL.currentDate().sub(1),
+                        DSL.currentDate());
+            }
+            selectQuery.addConditions(Operator.AND, condi);
+        }
+        // Group by clause.
+        if (groupBy) {
+            selectQuery.addGroupBy(field(colName));
+            selectQuery.addSelect(field(colName).as("xAxis"));
+        }
+        // Select clause.
+        if ("count".equalsIgnoreCase(metric)) {
+            selectQuery.addSelect(count().as("series"));
+        }
+        else if ("avg".equalsIgnoreCase(metric)){
+            selectQuery.addSelect(avg(field(colName).cast(MySQLDataType.DOUBLE)).as("series"));
+        }
+        else if ("var".equalsIgnoreCase(metric)){
+            selectQuery.addSelect(varPop(field(colName).cast(MySQLDataType.DOUBLE)).as("series"));
+        }
+        else if ("sum".equalsIgnoreCase(metric)) {
+            selectQuery.addSelect(sum(field(colName).cast(MySQLDataType.DOUBLE)).as("series"));
+        }
+        else {
+            LoggerX.println(TAG, "Unsupported metric: " + metric + ", use count function!");
+            selectQuery.addSelect(count().as("series"));            
+        }
+        LoggerX.println(TAG, "SQL: " + selectQuery.getSQL());
+        selectQuery.addSelect(field(colName));
+        
+        // Execute sql.
+        JsonArray xAxis = new JsonArray();
+        JsonArray series = new JsonArray();
+        Result<Record> records = selectQuery.fetch();
+        LoggerX.println(TAG, "Recodrs:\n" + records.formatJSON());
+        for (Record r: records) {
+            if (groupBy) {
+                xAxis.add(new JsonPrimitive(r.get("xAxis") == null? "null": r.get("xAxis").toString()));                
+            }
+            series.add(new JsonPrimitive(Double.parseDouble(r.get("series").toString())));
+        }
+        if (!groupBy) {
+            xAxis.add(new JsonPrimitive(colName));
+        }
+        rst.add("xAxis", xAxis);
+        rst.add("series", series);
+        LoggerX.println(TAG, "Stats result:\n" + rst.toString());
         return rst.toString();
     }
 

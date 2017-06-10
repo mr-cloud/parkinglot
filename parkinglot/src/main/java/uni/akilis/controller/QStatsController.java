@@ -55,6 +55,20 @@ public class QStatsController extends HttpServlet{
             rst = this.qStatsDAO.getColumnCategories(tableName, colName);
 
         }
+        else if ("/showReport.do".equalsIgnoreCase(url)) {
+            String tableName = req.getParameter("tableName");
+            String colName = req.getParameter("colName");
+            String metric = req.getParameter("metric");
+            boolean groupBy = Boolean.parseBoolean(req.getParameter("groupBy"));
+            String timeCol = req.getParameter("timeCol");
+            String period = req.getParameter("period");
+            rst = this.qStatsDAO.doStats(tableName,
+                    colName,
+                    metric,
+                    groupBy,
+                    timeCol,
+                    period);
+        }
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();
@@ -79,9 +93,7 @@ public class QStatsController extends HttpServlet{
             LoggerX.println("Content: " + jb.toString());
             rst = this.qStatsDAO.getTableRecordsServerSide(jb.toString());
         }
-        else if ("/showReport.do".equalsIgnoreCase(url)) {
-            // TODO
-        }
+
         resp.setContentType("application/json");
         resp.setCharacterEncoding("utf-8");
         PrintWriter out = resp.getWriter();

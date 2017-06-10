@@ -3,17 +3,26 @@ var reportTable;
 var tableName = "plparkingrecord";
 var myChart;
 
+function getSelectedText(elementId) {
+    var elt = document.getElementById(elementId);
+
+    if (elt.selectedIndex == -1)
+        return null;
+
+    return elt.options[elt.selectedIndex].text;
+}
+
 function stats(){
+	if ($("#statsX").val() === "") {
+		alert("Stats conditions is incomplete!");
+		return;
+	}
 	var xAttr = JSON.parse($("#statsX").val());
 	colName = xAttr[0];
 	metric = $("#statsY").val();
 	groupBy = xAttr[1];
 	timeCol = $("#timeCol").val();
 	period = $("#period").val();
-	if (colName === "" || metric === "" || groupBy === "" || timeCol === "" || period === "") {
-		alert("Stats conditions is incomplete!");
-		return;
-	}
 	var xAxisData;
 	var seriesData;
 
@@ -29,7 +38,10 @@ function stats(){
 			xAxisData = data.xAxis;
 			seriesData = data.series;
 			
-			var subtext = colName;
+			var subtext = '统计项: [' + getSelectedText("statsX") + ']'
+							+ ', 统计指标: [' + getSelectedText("statsY") + ']'
+							+ ', 时间列: [' + getSelectedText("timeCol") + ']'
+							+ ', 周期: [' + getSelectedText("period") + ']';
 			var seriesName = metric;
 			
 			
@@ -66,7 +78,25 @@ function stats(){
 		            data: seriesData
 		        }]
 		    };
-
+		  //Random color.
+		    option.series[0].itemStyle={
+		    		normal: {
+		    			color: function(params) {
+		    				var index = params.dataIndex;//表示当前的数据条的索引
+		    				var color="";//表示最终显示的颜色
+		    				var colorList = ['#C1232B','#B5C334','#FCCE10','#E87C25','#27727B',
+		    				                 '#FE8463','#9BCA63','#FAD860','#F3A43B','#60C0DD',
+		    				                 '#D7504B','#C6E579','#F4E001','#F0805A','#26C0C0'
+		    				                 ];
+		    				color = colorList[index % colorList.length]; 
+		    				return color;
+		    			},
+		    			label:{
+		    				show: true,
+		    				position: 'top'
+		    			}
+		    		}
+		    };
 		    // 使用刚指定的配置项和数据显示图表。
 		    myChart.setOption(option);
 		}
