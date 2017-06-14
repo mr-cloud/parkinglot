@@ -122,21 +122,12 @@ function xAxisChose(){
 	}
 }
 $(document).ready(function() {
-	// Init tables.
-	document.getElementById("plblacklist").innerHTML = "plblacklist";
-	document.getElementById("pldealrecord").innerHTML = "pldealrecord";
-	document.getElementById("plmalfunctionrecord").innerHTML = "plmalfunctionrecord";
-	document.getElementById("plparkingsensor").innerHTML = "plparkingsensor";
-	document.getElementById("plparkingspace").innerHTML = "plparkingspace";
-	document.getElementById("plparkingcar").innerHTML = "plparkingcar";
-	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
-	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
-	
+	initTables();
 	// Init columns
-	document.getElementById("DataTable.blId").innerHTML = "blId";
-	document.getElementById("DataTable.carLicence").innerHTML = "carLicence";
-	document.getElementById("DataTable.reason").innerHTML = "reason";
-	document.getElementById("DataTable.type").innerHTML = "type";
+	document.getElementById("DataTable.blId").innerHTML = "黑名单编号";
+	document.getElementById("DataTable.carLicence").innerHTML = "车牌号";
+	document.getElementById("DataTable.reason").innerHTML = "原因";
+	document.getElementById("DataTable.type").innerHTML = "受限类别";
 
 	// Init table and show records.
     // Setup - add a text input to each footer cell

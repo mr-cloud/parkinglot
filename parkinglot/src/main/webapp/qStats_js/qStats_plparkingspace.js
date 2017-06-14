@@ -122,22 +122,13 @@ function xAxisChose(){
 	}
 }
 $(document).ready(function() {
-	// Init tables.
-	document.getElementById("plblacklist").innerHTML = "plblacklist";
-	document.getElementById("pldealrecord").innerHTML = "pldealrecord";
-	document.getElementById("plmalfunctionrecord").innerHTML = "plmalfunctionrecord";
-	document.getElementById("plparkingsensor").innerHTML = "plparkingsensor";
-	document.getElementById("plparkingspace").innerHTML = "plparkingspace";
-	document.getElementById("plparkingcar").innerHTML = "plparkingcar";
-	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
-	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
-	
+	initTables();
 	// Init columns
-	document.getElementById("DataTable.pSpaceId").innerHTML = "pSpaceId";
-	document.getElementById("DataTable.resStatus").innerHTML = "resStatus";
-	document.getElementById("DataTable.carType").innerHTML = "carType";
-	document.getElementById("DataTable.ps_sId").innerHTML = "ps_sId";
-	document.getElementById("DataTable.pc_tId").innerHTML = "pc_tId";
+	document.getElementById("DataTable.pSpaceId").innerHTML = "车位编号";
+	document.getElementById("DataTable.resStatus").innerHTML = "预约状态";
+	document.getElementById("DataTable.carType").innerHTML = "准停车辆";
+	document.getElementById("DataTable.ps_sId").innerHTML = "车位传感器_传感器编号";
+	document.getElementById("DataTable.pc_tId").innerHTML = "车辆_车辆编号";
 
 	// Init table and show records.
     // Setup - add a text input to each footer cell

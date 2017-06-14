@@ -124,24 +124,15 @@ function xAxisChose(){
 	}
 }
 $(document).ready(function() {
-	// Init tables.
-	document.getElementById("plblacklist").innerHTML = "plblacklist";
-	document.getElementById("pldealrecord").innerHTML = "pldealrecord";
-	document.getElementById("plmalfunctionrecord").innerHTML = "plmalfunctionrecord";
-	document.getElementById("plparkingsensor").innerHTML = "plparkingsensor";
-	document.getElementById("plparkingspace").innerHTML = "plparkingspace";
-	document.getElementById("plparkingcar").innerHTML = "plparkingcar";
-	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
-	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
-	
+	initTables();
 	// Init columns
 	document.getElementById("DataTable.tId").innerHTML = "车辆编号";
-	document.getElementById("DataTable.carLicence").innerHTML = "车牌号码";
+	document.getElementById("DataTable.carLicence").innerHTML = "车牌号";
 	document.getElementById("DataTable.carType").innerHTML = "车辆类型";
 	document.getElementById("DataTable.carColor").innerHTML = "车辆颜色";
 	document.getElementById("DataTable.iTime").innerHTML = "入场时间";
 	document.getElementById("DataTable.code").innerHTML = "编码";
-	document.getElementById("DataTable.pickCount").innerHTML = "pickCount";
+	document.getElementById("DataTable.pickCount").innerHTML = "搬运次数";
 	
 	// Init table and show records.   
 	reportTable = $('#DataTable').DataTable( {

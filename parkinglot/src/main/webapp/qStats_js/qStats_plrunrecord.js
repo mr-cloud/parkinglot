@@ -124,22 +124,13 @@ function xAxisChose(){
 	}
 }
 $(document).ready(function() {
-	// Init tables.
-	document.getElementById("plblacklist").innerHTML = "plblacklist";
-	document.getElementById("pldealrecord").innerHTML = "pldealrecord";
-	document.getElementById("plmalfunctionrecord").innerHTML = "plmalfunctionrecord";
-	document.getElementById("plparkingsensor").innerHTML = "plparkingsensor";
-	document.getElementById("plparkingspace").innerHTML = "plparkingspace";
-	document.getElementById("plparkingcar").innerHTML = "plparkingcar";
-	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
-	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
-	
+	initTables();
 	// Init columns
-	document.getElementById("DataTable.id").innerHTML = "id";	
-	document.getElementById("DataTable.time").innerHTML = "指令开始时间";
-	document.getElementById("DataTable.spaceId").innerHTML = "车位编号";
-	document.getElementById("DataTable.status").innerHTML = "断电时刻状态";
-	document.getElementById("DataTable.step").innerHTML = "断电时刻步骤";
+	document.getElementById("DataTable.id").innerHTML = "记录号";	
+	document.getElementById("DataTable.time").innerHTML = "运行时间";
+	document.getElementById("DataTable.spaceId").innerHTML = "楼层车位";
+	document.getElementById("DataTable.status").innerHTML = "运行状态";
+	document.getElementById("DataTable.step").innerHTML = "运行步骤";
 	
 	// Init table and show records.   
 	reportTable = $('#DataTable').DataTable( {

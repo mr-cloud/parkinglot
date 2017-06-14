@@ -140,21 +140,12 @@ $.fn.dataTable.ext.search.push(
     }
 );
 $(document).ready(function() {
-	// Init tables.
-	document.getElementById("plblacklist").innerHTML = "plblacklist";
-	document.getElementById("pldealrecord").innerHTML = "pldealrecord";
-	document.getElementById("plmalfunctionrecord").innerHTML = "plmalfunctionrecord";
-	document.getElementById("plparkingsensor").innerHTML = "plparkingsensor";
-	document.getElementById("plparkingspace").innerHTML = "plparkingspace";
-	document.getElementById("plparkingcar").innerHTML = "plparkingcar";
-	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
-	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
-	
+	initTables();
 	// Init columns
-	document.getElementById("DataTable.id").innerHTML = "id";
-	document.getElementById("DataTable.time").innerHTML = "time";
-	document.getElementById("DataTable.type").innerHTML = "type";
-	document.getElementById("DataTable.description").innerHTML = "description";
+	document.getElementById("DataTable.id").innerHTML = "记录号";
+	document.getElementById("DataTable.time").innerHTML = "故障时间";
+	document.getElementById("DataTable.type").innerHTML = "故障类型";
+	document.getElementById("DataTable.description").innerHTML = "故障描述";
 
 	// Init table and show records.
     // Setup - add a text input to each footer cell

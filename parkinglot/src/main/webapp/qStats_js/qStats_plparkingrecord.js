@@ -158,26 +158,17 @@ function getColumnCategories(colName){
 	});
 }
 $(document).ready(function() {
-	// Init tables.
-	document.getElementById("plblacklist").innerHTML = "plblacklist";
-	document.getElementById("pldealrecord").innerHTML = "pldealrecord";
-	document.getElementById("plmalfunctionrecord").innerHTML = "plmalfunctionrecord";
-	document.getElementById("plparkingsensor").innerHTML = "plparkingsensor";
-	document.getElementById("plparkingspace").innerHTML = "plparkingspace";
-	document.getElementById("plparkingcar").innerHTML = "plparkingcar";
-	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
-	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
-	
+	initTables();
 	// Init columns
-	document.getElementById("DataTable.id").innerHTML = "id";
-	document.getElementById("DataTable.carLicense").innerHTML = "车牌号码";
+	document.getElementById("DataTable.id").innerHTML = "记录号";
+	document.getElementById("DataTable.carLicense").innerHTML = "车牌号";
 	document.getElementById("DataTable.carType").innerHTML = "车辆类型";
 	document.getElementById("DataTable.carColor").innerHTML = "车辆颜色";
 	document.getElementById("DataTable.iTime").innerHTML = "入场时间";
 	document.getElementById("DataTable.oTime").innerHTML = "出场时间";
-	document.getElementById("DataTable.code").innerHTML = "编码";
-	document.getElementById("DataTable.cost").innerHTML = "收费金额";
-	document.getElementById("DataTable.payWay").innerHTML = "支付方式";
+	document.getElementById("DataTable.code").innerHTML = "条码";
+	document.getElementById("DataTable.cost").innerHTML = "费用";
+	document.getElementById("DataTable.payWay").innerHTML = "收费方式";
 
 	// Init search tags. Should take it from static tables. 
 //	getcarType();

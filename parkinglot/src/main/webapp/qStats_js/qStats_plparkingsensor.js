@@ -122,20 +122,11 @@ function xAxisChose(){
 	}
 }
 $(document).ready(function() {
-	// Init tables.
-	document.getElementById("plblacklist").innerHTML = "plblacklist";
-	document.getElementById("pldealrecord").innerHTML = "pldealrecord";
-	document.getElementById("plmalfunctionrecord").innerHTML = "plmalfunctionrecord";
-	document.getElementById("plparkingsensor").innerHTML = "plparkingsensor";
-	document.getElementById("plparkingspace").innerHTML = "plparkingspace";
-	document.getElementById("plparkingcar").innerHTML = "plparkingcar";
-	document.getElementById("plparkingrecord").innerHTML = "plparkingrecord";
-	document.getElementById("plrunrecord").innerHTML = "plrunrecord";
-	
+	initTables();
 	// Init columns
-	document.getElementById("DataTable.sId").innerHTML = "sId";
-	document.getElementById("DataTable.nodeNumber").innerHTML = "nodeNumber";
-	document.getElementById("DataTable.IP").innerHTML = "IP";
+	document.getElementById("DataTable.sId").innerHTML = "传感器编号";
+	document.getElementById("DataTable.nodeNumber").innerHTML = "节点编号";
+	document.getElementById("DataTable.IP").innerHTML = "IP地址";
 
 	// Init table and show records.
     // Setup - add a text input to each footer cell

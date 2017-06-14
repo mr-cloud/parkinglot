@@ -31,3 +31,15 @@
     $.fn.dataTable.defaults.oLanguage=oLanguage;
     //$.extend($.fn.dataTable.defaults.oLanguage,oLanguage)
 })();
+
+function initTables(){
+	// Init tables.
+	document.getElementById("plblacklist").innerHTML = "黑名单";
+	document.getElementById("pldealrecord").innerHTML = "处理记录";
+	document.getElementById("plmalfunctionrecord").innerHTML = "故障记录";
+	document.getElementById("plparkingsensor").innerHTML = "车位传感器";
+	document.getElementById("plparkingspace").innerHTML = "车位";
+	document.getElementById("plparkingcar").innerHTML = "车辆";
+	document.getElementById("plparkingrecord").innerHTML = "停车记录";
+	document.getElementById("plrunrecord").innerHTML = "运行记录";
+}
