@@ -158,7 +158,7 @@ public class QStatsDAOImpl implements QStatsDAO{
                         DSL.currentDate());
             }
             else {
-                LoggerX.println(TAG, "Report on daily as priod is null.");
+                LoggerX.println(TAG, "Report on daily as period is null.");
                 condi = DSL.field(timeCol).between(DSL.currentDate().sub(1),
                         DSL.currentDate());
             }
